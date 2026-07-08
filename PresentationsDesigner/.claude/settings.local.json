@@ -16,7 +16,8 @@
       "Bash(pdftotext -layout \"GreenMetal_Cotizacion_de_Alcance_FySwap_v0.1.pdf\" -)",
       "Bash(find . -maxdepth 1 -iname \"*greenmetal*\")",
       "Bash(pdftotext -layout \"GreenMetal_Cotizacion_de_Alcance_FySwap_Recalculado.pdf\" -)",
-      "Bash(grep -iE \"total|valor|COP|USD|\\\\\\\\$|precio|inversi\")"
+      "Bash(grep -iE \"total|valor|COP|USD|\\\\\\\\$|precio|inversi\")",
+      "PowerShell($c = @\\(\"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"C:\\\\Program Files \\(x86\\)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"$env:LOCALAPPDATA\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\"\\) | Where-Object { Test-Path $_ } | Select-Object -First 1; if \\(-not $c\\) { \"CHROME_NOT_FOUND\" } else { \"$c\" })"
     ]
   }
 }

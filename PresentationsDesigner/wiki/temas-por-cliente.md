@@ -56,7 +56,9 @@ El resto de `styles.css` es **idéntico** entre decks. Solo se re-definen estos 
 - **Marca cálida** (ámbar/rojo/naranja): el punto "Confidencial" y alertas se ponen en un
   **acento frío** (cian) para que resalte; con marca fría, el punto sigue en ámbar.
 - **Dos clientes con el mismo color** (p. ej. GreenMetal y Mchaileh, ambos verdes): sepáralos
-  por **sub-hue** (lima-forward vs esmeralda/teal-forward) para que no se vean iguales.
+  por **trayectoria de gradiente + tinte de fondo** para que no se vean iguales. GreenMetal:
+  **lima-forward → teal** (termina cian-menta), fondo casi neutro. Mchaileh: **hoja/kelly-forward
+  → esmeralda** (se queda en verde, sin teal), fondo **bosque teñido**.
 
 ---
 
@@ -99,16 +101,22 @@ demo). Solo se muestran los tokens que cambian.
 --text-mid:#C3D6C9; --text-lo:#7E9187; --text-faint:#495A50;
 ```
 
-### Mchaileh — verde esmeralda/teal (distinto de GreenMetal)
+### Mchaileh — verde hoja/esmeralda de marca (distinto de GreenMetal)
+> Derivado del logo real: verde **lima** (techo izq.) + verde **hoja/esmeralda** (cuerpo y
+> subrayado). Se diferencia de GreenMetal por trayectoria: GreenMetal es **lima-forward → teal**
+> (termina cian-menta); Mchaileh es **hoja/kelly-forward → esmeralda** (se queda en verde, sin
+> teal) sobre un fondo **bosque teñido**. Aplicado al deck el 2026-07-08 (reemplaza el bloque
+> anterior esmeralda→azul, que introducía un azul ajeno a la marca).
 ```css
---bg-0:#04090A; --bg-1:#061313; --bg-2:#0A1B1D; --bg-deep:#07171C;
---bg-glow-a:rgba(52,224,176,.13); --bg-glow-b:rgba(58,160,224,.11);
---cyan:#34E0B0; --blue:#22C58A; --violet:#1FA6B8; --magenta:#3AA0E0;
---grad-brand:linear-gradient(100deg,#34E0B0 0%,#22C58A 40%,#1FA6B8 74%,#3AA0E0 100%);
---grad-cyan:linear-gradient(120deg,#34E0B0,#22C58A);
---grad-violet:linear-gradient(120deg,#2ACF9E,#3AA0E0);
---card-border:1px solid rgba(90,190,180,.18);
---text-mid:#BFD8D3; --text-lo:#78948F; --text-faint:#46605C;
+--bg-0:#040A06; --bg-1:#08140C; --bg-2:#0C1F14; --bg-deep:#081A0F;
+--bg-glow-a:rgba(64,200,96,.13); --bg-glow-b:rgba(155,213,52,.10);
+--cyan:#4FD07A; --blue:#34C24E; --violet:#1FA95F; --magenta:#8CC63E; --lime:#9BD534;
+--brand-green:#3DAE48;
+--grad-brand:linear-gradient(100deg,#9BD534 0%,#4FD07A 38%,#22B06B 72%,#1FA95F 100%);
+--grad-cyan:linear-gradient(120deg,#4FD07A,#22B06B);
+--grad-violet:linear-gradient(120deg,#8CC63E,#1FA95F);
+--card-border:1px solid rgba(110,190,130,.16);
+--text-mid:#C6DBC9; --text-lo:#7C9683; --text-faint:#47604F;
 ```
 
 ### Ve a la Segura — "concierto" (violeta-negro · rosa→magenta→violeta→índigo)
@@ -150,3 +158,8 @@ Usado sin logo oficial (evento/boletería, sin PNG de marca): wordmark recreado 
 - **Decks existentes** (Compumax, GreenMetal, Mchaileh, Miami): pueden re-tematizarse con
   su bloque de esta página cuando el usuario lo pida (cambia solo `:root` + los 3 usos de
   `--bg-deep`; el resto no se toca).
+- ⛔ **Registro obligatorio (regla 2026-07-08):** cada vez que se tematiza una empresa
+  (nueva o re-tematizada), su paleta **debe** quedar registrada en dos lugares: (1) el
+  **catálogo** de esta página (bloque de tokens) y (2) el **demo de temas**
+  `presentaciones/_temas-demo/index.html` (un tile con su gradiente y fondo). Además, la
+  presentación se lista/actualiza en [[index]]. Ver también el CLAUDE.md raíz.

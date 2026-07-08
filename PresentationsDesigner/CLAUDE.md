@@ -65,6 +65,10 @@ el trabajo de construcción, despliegue y mantenimiento de esta wiki.
    teñido incluido**) del **logo del cliente**, siguiendo la receta y el contrato de tokens de
    `wiki/temas-por-cliente.md`. Cada empresa debe verse distinta; el cian/violeta es solo el
    tema *default*. La incluyo en el plan del paso 4.
+   > **Regla 2 (2026-07-08):** todo diseño se **inspira en los colores de la marca**, pero
+   > **siempre sobre el diseño oscuro actual** — lo que cambia es solo el **hue de acento**
+   > (p. ej. Azul → Rojo, cian → verde) y el tinte del fondo; el esquema oscuro base, la
+   > tipografía y los layouts NO cambian. Nunca fondos claros ni cambio de estilo.
 4. ⛔ **REGLA OBLIGATORIA — Plan antes de diseñar:** ANTES de escribir una sola línea
    de HTML/CSS, le presento al usuario **qué va a tener cada diapositiva** (contenido
    + tratamiento visual + **paleta propuesta**, slide por slide). **NO construyo hasta que el usuario confirme.**
@@ -74,6 +78,11 @@ el trabajo de construcción, despliegue y mantenimiento de esta wiki.
 7. Iteramos sobre ajustes.
 8. Exporto a **PDF** (ver `wiki/despliegue.md`) y entrego el archivo.
 9. Actualizo `index.md` y agrego entrada a `log.md`.
+   > ⛔ **Regla 3 (2026-07-08) — Registro del tema:** cada vez que diseño (o re-tematizo) una
+   > empresa, su paleta **debe** quedar registrada en **dos lugares**, sin excepción:
+   > (a) la presentación listada/actualizada en `wiki/index.md`, y
+   > (b) un **tile con su gradiente y fondo** en `presentaciones/_temas-demo/index.html`
+   > (más su bloque de tokens en el catálogo de `wiki/temas-por-cliente.md`).
 10. 🔗 **REGLA OBLIGATORIA — Compartir link:** al terminar de crear (o modificar) cualquier
     presentación, **comparto en el chat el link actualizado de Vercel**, con la forma
     `https://fullservice-presentaciones.vercel.app/<slug>/index.html`
@@ -92,8 +101,11 @@ Cada `index.html` de presentación **debe** tener, sin excepción:
    `presentaciones/<slug>/assets/favicon.png` (autocontenido, igual que las fuentes) y se
    referencia con `<link rel="icon" type="image/png" href="assets/favicon.png">`.
    El isotipo maestro está en `recursos/favicon-campuslands.png` / `recursos/isotipo-campuslands.png`.
-2. **`<title>` = nombre de la Empresa** (el cliente), limpio y a secas — p. ej. `Compumax`,
-   `Green Metal`, `Miami Aqua Tours` — sin sufijos legales (S.A.S) ni descripción de la propuesta.
+2. **`<title>` = razón social / nombre corporativo COMPLETO de la Empresa** (el cliente),
+   **incluyendo el sufijo legal** — p. ej. `Compumax Computer S.A.S.`, `C.I. Green Metal S.A.S.`,
+   `Inmobiliaria Mchaileh y Cia. S.A.S.` — sin descripción de la propuesta.
+   (Cambiado **2026-07-08** por instrucción del usuario: antes se usaba el nombre corto a secas.
+   Los decks ya entregados deben migrarse a su razón social cuando se toquen.)
 
 ### Mantener la wiki (Lint)
 Periódicamente reviso: contradicciones, info desactualizada, páginas huérfanas,

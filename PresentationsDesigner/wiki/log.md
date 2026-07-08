@@ -4,6 +4,25 @@ Registro cronológico de las construcciones, despliegues y mantenimiento de la w
 
 ---
 
+## [2026-07-08] ajuste | Mchaileh re-tematizado a verde de marca + 3 reglas nuevas
+
+* **Re-tema Mchaileh (`presentaciones/mchaileh-crm-ia/styles.css`):** el deck seguía en la paleta
+  *default* cian/violeta pese a que su logo es 100% verde (lima + hoja/esmeralda). Derivé la paleta
+  del logo: gradiente **`#9BD534→#4FD07A→#22B06B→#1FA95F`** (hoja/kelly-forward → esmeralda, sin teal)
+  sobre **fondo bosque teñido** (`--bg-0:#040A06 … --bg-deep:#081A0F`). Reemplacé todos los rgba
+  cian/violeta/azul hardcodeados por verdes; introduje `--bg-deep` (antes `#0B1120` fijo en `.slide`,
+  `.glow-a`, `.glow-b`). Se conserva el rojo semántico en la columna "Antes/HOY". Verificado en navegador.
+* **Distinción vs GreenMetal:** GreenMetal = lima-forward → teal, fondo casi neutro; Mchaileh = hoja
+  → esmeralda, fondo verde-bosque. Catálogo actualizado en `wiki/temas-por-cliente.md`.
+* **Regla 1 (título):** `<title>` ahora = **razón social / nombre corporativo completo** (con sufijo
+  legal), p. ej. `Compumax Computer S.A.S.`. Antes era el nombre corto a secas. (`CLAUDE.md` §head.)
+* **Regla 2 (color):** todo diseño se inspira en los colores de marca **sobre el oscuro base actual**;
+  solo cambia el hue de acento (Azul→Rojo, cian→verde) y el tinte del fondo. (`CLAUDE.md` §Build.3.)
+* **Regla 3 (registro):** cada empresa tematizada se registra en `wiki/index.md` **y** en un tile de
+  `presentaciones/_temas-demo/index.html` (+ bloque en `temas-por-cliente.md`). (`CLAUDE.md` §Build.9.)
+* **Demo de temas:** tile Mchaileh actualizado al verde de marca y **agregado tile de Ve a la Segura**
+  (faltaba). Pendiente: export a PDF de Mchaileh y compartir link.
+
 ## [2026-07-08] marca | Favicon (isotipo Campuslands) + título = nombre de empresa en toda web
 
 * **Regla nueva estipulada en `CLAUDE.md`** (sección "Requisitos de `<head>`"): toda web debe tener
