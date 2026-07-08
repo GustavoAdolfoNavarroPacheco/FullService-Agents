@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(python3 -c \"import fitz\")",
+      "Bash(python3 -c \"import pypdf\")",
+      "Bash(pdftotext -layout -f 1 -l 1 \"Miami Aqua Tours - Cotizacion de Alcance v0.2.pdf\" -)",
+      "Bash(find \"/c/Users/Full Service/Downloads\" -maxdepth 1 -iname \"*miami*\" -o -maxdepth 1 -iname \"*aqua*\" 2>/dev/null; echo \"---clipboard/paste dirs---\"; find \"/c/Users/Full Service/AppData/Local/Temp\" -maxdepth 2 -iname \"*paste*\" 2>/dev/null | head -20)",
+      "Bash(mkdir -p presentaciones/miami-aqua-tours-ampliado/assets)",
+      "Bash(cp \"presentaciones/miami-aqua-tours/assets/logo-campuslands.png\" \"presentaciones/miami-aqua-tours-ampliado/assets/logo-campuslands.png\")",
+      "Bash(cp \"/c/Users/Full Service/Downloads/miami-aqua-tours-png.png\" \"presentaciones/miami-aqua-tours-ampliado/assets/logo-cliente.png\")",
+      "Bash(pdfinfo \"miami-aqua-tours-ampliado-slide1.pdf\")",
+      "Bash(pdftotext -layout \"miami-aqua-tours-ampliado-slide1.pdf\" -)",
+      "Bash(pdftotext \"miami-aqua-tours-ampliado-slide1.pdf\" -)",
+      "Bash(python3 -c ' *)",
+      "Bash(pdftotext -layout \"Miami Aqua Tours - Cotizacion de Alcance.pdf\" -)",
+      "Bash(pdftotext -layout \"GreenMetal_Cotizacion_de_Alcance_FySwap_v0.1.pdf\" -)",
+      "Bash(find . -maxdepth 1 -iname \"*greenmetal*\")",
+      "Bash(pdftotext -layout \"GreenMetal_Cotizacion_de_Alcance_FySwap_Recalculado.pdf\" -)",
+      "Bash(grep -iE \"total|valor|COP|USD|\\\\\\\\$|precio|inversi\")"
+    ]
+  }
+}
