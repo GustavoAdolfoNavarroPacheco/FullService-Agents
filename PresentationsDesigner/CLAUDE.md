@@ -126,6 +126,15 @@ Cada deck debe demostrar:
 - **Dinamismo**: NO todas las láminas iguales. Alternar arquetipos de layout entre láminas
   contiguas (portada, métricas, split, diagrama, grid, statement, timeline, tabla, CTA).
 - Jerarquía por contraste de escala, ritmo intencional en el espaciado, profundidad/capas.
+- ⛔ **REGLA OBLIGATORIA — Balance de espacio (2026-07-09):** ninguna lámina debe dejar espacio
+  **vacío** (una franja de fondo sin contenido porque el bloque se renderizó a su tamaño mínimo,
+  p. ej. una sola fila de tarjetas pequeñas en una lámina más alta), pero tampoco debe quedar todo
+  **apretado** (elementos pegados, sin `gap`/padding perceptible). Antes de dar el borrador por
+  terminado: si sobra una franja vacía notable (>15–20% de la altura de `.s-body`),
+  **redistribuir** el contenido — más filas/columnas, tarjetas/tipografía/nodos más grandes, o
+  `gap`/padding mayor, en ese orden de preferencia — antes de entregar. Caso real que originó la
+  regla: `presentaciones/greenmetal-fyswap/`, timeline de 6 fases en 1 fila que dejaba ~40% de la
+  lámina vacío. Detalle completo en `wiki/sistema-diseno.md` §5.1.
 - **Conteo de láminas LIBRE** (no 16 fijas): las que la narrativa necesite.
 - **Verificación perfecta** de alineación y posición de logos, tarjetas y figuras
   (preview en navegador + export PDF + lectura del PDF; sin hairlines ni desbordes).

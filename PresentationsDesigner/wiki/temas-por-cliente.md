@@ -134,6 +134,22 @@ demo). Solo se muestran los tokens que cambian.
 Usado sin logo oficial (evento/boletería, sin PNG de marca): wordmark recreado con `.wm` en vez de
 `<img>` — ver contrato de wordmark abajo.
 
+### Multinal — naranja del ícono → índigo del wordmark
+> Derivado del logo real: naranja vivo (`#FF7A00`, óvalos del isotipo) hacia el índigo-violeta
+> del wordmark (`#312883`). Marca **cálida** → el punto "Confidencial" se pone en cian frío
+> por la regla de seguridad. Usado en `presentaciones/multinal-escenario-b/`.
+```css
+--bg-0:#0B0704; --bg-1:#150D07; --bg-2:#1E140B; --bg-deep:#170F08;
+--bg-glow-a:rgba(255,122,0,.13); --bg-glow-b:rgba(74,54,167,.13);
+--cyan:#FFB24D; --blue:#FF7A00; --violet:#7A5AD1; --magenta:#3B2A8C;
+--grad-brand:linear-gradient(100deg,#FFC670 0%,#FF7A00 38%,#7A5AD1 72%,#3B2A8C 100%);
+--grad-cyan:linear-gradient(120deg,#FFC670,#FF7A00);
+--grad-violet:linear-gradient(120deg,#9575E0,#3B2A8C);
+--card-border:1px solid rgba(220,150,90,.16);
+--text-mid:#E4D6C6; --text-lo:#9C8A78; --text-faint:#5A4C40;
+--dot-confidential:#35D0F0; --dot-confidential-glow:rgba(53,208,240,.7);
+```
+
 ### Ejemplos de rango (para marcas fuera de la gama fría)
 **Cálido (ámbar/coral)** — punto Confidencial en cian:
 ```css

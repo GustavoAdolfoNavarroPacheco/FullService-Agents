@@ -4,6 +4,43 @@ Registro cronológico de las construcciones, despliegues y mantenimiento de la w
 
 ---
 
+## [2026-07-09] build | Multinal S.A.S. — Ecosistema Digital Corporativo, Escenario B (18 láminas)
+
+* **Encargo:** Escenario B de 2 propuestas para Multinal S.A.S., a partir de `Multinal SAS -
+  Alcances por Proyecto B.xlsx` y `Multinal SAS - Cotizacion B.xlsx`. Regla del cliente: cada
+  módulo/agente en **una sola lámina** (nunca repartido en 2), sin límite de número de hojas.
+* **Estructura (18 láminas):** Portada (rotulada "Escenario B") · Diagnóstico · Mapa del
+  Ecosistema (13 módulos) · PRY-001 a PRY-006 (CRM, Portal Clientes, Portal Proveedores,
+  Repositorio Documental, BI, Workflow — una lámina c/u con 5–7 funcionalidades desglosadas de
+  la cotización con numeración RF) · PRY-007A a 007G (7 agentes de IA, uno por lámina, con tag
+  de integración al módulo core relacionado) · Inversión y Alcance (**sin cifra** — "Valor por
+  definir", misma estructura visual `.invest`/`.pay` que otros decks) · Próximos pasos.
+* **Paleta:** derivada del logo real (`recursos/Multinal S.A.S.png`, muestreado con PIL) —
+  naranja `#FF7A00` del isotipo → índigo `#312883` del wordmark, fondo ámbar-negro teñido, punto
+  "Confidencial" en cian frío (regla de marca cálida). Registrada en [[temas-por-cliente]] y
+  `presentaciones/_temas-demo/index.html`.
+* **Bug corregido en QA:** el primer borrador desbordaba el `.feat-grid` de los módulos de
+  5–7 tarjetas hacia el footer (30–110px de intrusión, detectado por el usuario como
+  "superposición de texto"); se compactó `feat-card`/`feat-grid` (paddings, fuentes, gaps) y se
+  redujo `s-title`/`s-lead`. Verificado con medición programática (bounding boxes) en las 18
+  láminas + revisión visual del PDF renderizado con PyMuPDF — 0 desbordes tras el fix.
+* **Archivos:** `presentaciones/multinal-escenario-b/` (index.html, styles.css, assets/),
+  PDF de 18 páginas exportado con Chrome headless.
+
+## [2026-07-09] lint | Nueva norma obligatoria: balance de espacio (ni vacío ni apretado)
+
+* **Motivo:** tras el ajuste de la timeline de GreenMetal (6 fases en 1 fila dejaba ~40% de la
+  lámina vacío debajo), el usuario pidió formalizar la regla: el agente debe evitar espacios
+  "vacíos" en las láminas, pero sin caer en el extremo opuesto de apretar todo.
+* **`CLAUDE.md`** — nueva regla obligatoria en "Estándar de calidad de diseño": si un bloque deja
+  una franja vacía notable (>15–20% de la altura de `.s-body`), redistribuir contenido (más
+  filas/columnas, tarjetas/tipografía más grandes, o mayor `gap`/padding) antes de entregar.
+* **`wiki/sistema-diseno.md`** — nuevo anti-patrón "Espacio vacío/muerto sin usar" (§5) y nueva
+  sección **§5.1 Balance de espacio: ni vacío ni apretado**, con checklist de decisión y el caso
+  real de GreenMetal como referencia.
+
+---
+
 ## [2026-07-09] ajuste | GreenMetal: timeline de 6 fases en 2 filas + precio actualizado
 
 * **Lámina 04 (`presentaciones/greenmetal-fyswap/index.html` + `styles.css`):** la línea de 6 fases

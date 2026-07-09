@@ -17,7 +17,15 @@
       "Bash(find . -maxdepth 1 -iname \"*greenmetal*\")",
       "Bash(pdftotext -layout \"GreenMetal_Cotizacion_de_Alcance_FySwap_Recalculado.pdf\" -)",
       "Bash(grep -iE \"total|valor|COP|USD|\\\\\\\\$|precio|inversi\")",
-      "PowerShell($c = @\\(\"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"C:\\\\Program Files \\(x86\\)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"$env:LOCALAPPDATA\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\"\\) | Where-Object { Test-Path $_ } | Select-Object -First 1; if \\(-not $c\\) { \"CHROME_NOT_FOUND\" } else { \"$c\" })"
+      "PowerShell($c = @\\(\"C:\\\\Program Files\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"C:\\\\Program Files \\(x86\\)\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\",\"$env:LOCALAPPDATA\\\\Google\\\\Chrome\\\\Application\\\\chrome.exe\"\\) | Where-Object { Test-Path $_ } | Select-Object -First 1; if \\(-not $c\\) { \"CHROME_NOT_FOUND\" } else { \"$c\" })",
+      "Bash(python \"C:\\\\Users\\\\Full Service\\\\AppData\\\\Roaming\\\\Claude\\\\local-agent-mode-sessions\\\\skills-plugin\\\\4f195566-7ab3-4030-a4c4-96218cb4636a\\\\507e9b09-b665-43ea-ae6f-e582f772e73e\\\\skills\\\\xlsx\\\\scripts\\\\extract-text.py\" --format xlsx \"../QuoteDeveloper/cotizaciones/multinal/Multinal SAS - Alcances por Proyecto B.xlsx\")",
+      "Bash(extract-text --format xlsx \"../QuoteDeveloper/cotizaciones/multinal/Multinal SAS - Alcances por Proyecto B.xlsx\")",
+      "Bash(python -c ' *)",
+      "Bash(pwd; echo \"---\"; cd \"C:\\\\Users\\\\Full Service\\\\Downloads\\\\FullService Agents - Gustavo Navarro\\\\PresentationsDesigner\" && pwd && ls -la recursos | grep -i multi *)",
+      "Bash(set -e)",
+      "Bash(cp \"presentaciones/greenmetal-fyswap/assets/fonts/\"*.ttf \"presentaciones/multinal-escenario-b/assets/fonts/\")",
+      "Bash(python -c \"import fitz; print\\('ok'\\)\")",
+      "Bash(python3)"
     ]
   }
 }

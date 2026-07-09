@@ -110,9 +110,37 @@ Reglas de ritmo: varía el **ángulo del glow**, cuál **gradiente** domina, y l
 * 🛑 **Barras rectangulares planas** como separadores en header/footer. El header/footer flotan sobre el fondo. Si necesitas separador, usa una **píldora en gradiente**, no un bloque plano.
 * 🛑 **Texto corrido centrado.** Alinear a la izquierda. El centro se reserva para el título de portada, métricas individuales o láminas tipo "statement".
 * 🛑 **Desbordamiento / falta de aire.** Deja ≥30% de aire negativo. Si no cabe, **divide en más láminas** (el conteo es libre; ver [[plantilla-base]]).
+* 🛑 **Espacio vacío/muerto sin usar.** Tan grave como el desbordamiento (regla añadida 2026-07-09,
+  ver §5.1 **Balance de espacio**): un bloque de contenido (timeline, grid, lista) que ocupa solo una
+  fracción de la altura disponible y deja el resto de la lámina en blanco es un defecto de diseño, no
+  "aire". Corrige redistribuyendo el contenido (más filas/columnas, tarjetas más grandes) antes de
+  entregar.
 * 🛑 **Color plano donde debería haber gradiente.** Priorizar gradientes (marca).
 * 🛑 **Reusar la misma paleta entre clientes.** Cada deck deriva su paleta —**fondo incluido**— del logo del cliente (ver [[temas-por-cliente]]). El cian/violeta es solo el tema *default* de Campuslands.
 * 🛑 **Logos deformados o sobre caja innecesaria.** Fijar solo `height`; verificar transparencia.
+
+### 5.1 Balance de espacio: ni vacío ni apretado (regla obligatoria, 2026-07-09)
+
+El objetivo es que cada lámina se sienta **intencionalmente compuesta**, no que el contenido
+simplemente "quepa". Dos fallas opuestas, igual de graves:
+
+* **Vacío:** un componente (timeline, grid de tarjetas, lista) renderizado a su tamaño mínimo/por
+  defecto dentro de una lámina más alta, dejando una franja de fondo sin nada debajo. Caso real:
+  `presentaciones/greenmetal-fyswap/` — 6 fases en una sola fila de tarjetas pequeñas dejaban ~40%
+  de la lámina vacío debajo.
+* **Apretado:** elementos pegados unos a otros, sin `gap`/padding perceptible, o texto que casi toca
+  el borde de su tarjeta o el footer.
+
+**Cómo decidir, antes de dar el borrador por terminado:**
+1. Mide (o estima) qué porcentaje de la altura de `.s-body` ocupa el contenido real.
+2. Si sobra una franja vacía notable (más del ~15–20% de la altura sin ningún elemento), **redistribuye**:
+   reparte el contenido en más filas/columnas (p. ej. 6 ítems en 1 fila → 2 filas de 3), agranda
+   tarjetas/tipografía/nodos, o añade `gap`/padding generoso entre bloques — en ese orden de preferencia.
+3. Si en cambio los elementos quedan pegados o el texto roza sus bordes, **agranda el espaciado**
+   (`gap`, `padding`, `margin-top`) antes que reducir tamaños de fuente.
+4. El punto de referencia es el **aire negativo objetivo (~25–35% de la lámina)** ya exigido en el
+   anti-patrón de desbordamiento — pero repartido de forma intencional (respiración entre bloques),
+   nunca como una franja residual sin diseñar al final o al costado.
 
 ### Trampa técnica verificada (print)
 El texto en gradiente con `background-clip:text` debe ir en un elemento **`inline`**
