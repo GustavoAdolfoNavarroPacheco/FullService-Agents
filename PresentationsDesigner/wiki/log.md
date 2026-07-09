@@ -4,6 +4,18 @@ Registro cronológico de las construcciones, despliegues y mantenimiento de la w
 
 ---
 
+## [2026-07-09] ajuste | GreenMetal: timeline de 6 fases en 2 filas + precio actualizado
+
+* **Lámina 04 (`presentaciones/greenmetal-fyswap/index.html` + `styles.css`):** la línea de 6 fases
+  en una sola fila quedaba pequeña y dejaba mucho espacio vacío debajo. Se reestructuró en
+  `.timeline` con dos `.timeline-row` (3 fases arriba, 3 abajo), cada fila con su propia línea
+  conectora; se agrandaron nodos, títulos y texto de cada fase para aprovechar el espacio.
+  Verificado sin overflow (bottom de `.timeline` a 447px dentro de una lámina de 594px).
+* **Precio actualizado (lámina 07 · Inversión):** de `$42.182.849,99` a **`$60.217.679`**.
+* Exportado PDF actualizado (`greenmetal-fyswap.pdf`).
+
+---
+
 ## [2026-07-08] ajuste | Mchaileh re-tematizado a verde de marca + 3 reglas nuevas
 
 * **Re-tema Mchaileh (`presentaciones/mchaileh-crm-ia/styles.css`):** el deck seguía en la paleta
