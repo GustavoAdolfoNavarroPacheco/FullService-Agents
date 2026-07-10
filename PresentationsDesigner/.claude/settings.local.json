@@ -25,7 +25,13 @@
       "Bash(set -e)",
       "Bash(cp \"presentaciones/greenmetal-fyswap/assets/fonts/\"*.ttf \"presentaciones/multinal-escenario-b/assets/fonts/\")",
       "Bash(python -c \"import fitz; print\\('ok'\\)\")",
-      "Bash(python3)"
+      "Bash(python3)",
+      "Bash(grep -nE \"#[0-9A-Fa-f]{3,6}|rgba\\\\\\(\" \"presentaciones/multinal-escenario-b/styles.css\")",
+      "Bash(grep -vE \"^\\\\s*$\")",
+      "Bash(mkdir -p \"presentaciones/multinal-escenario-c/assets/fonts\" *)",
+      "Bash(cp \"presentaciones/multinal-escenario-b/assets/logo-cliente.png\" \"presentaciones/multinal-escenario-b-demo/docs/assets/logo-cliente.png\" *)",
+      "Bash(python3 -)",
+      "Bash(echo \"style.css diff exit: $?\")"
     ]
   }
 }

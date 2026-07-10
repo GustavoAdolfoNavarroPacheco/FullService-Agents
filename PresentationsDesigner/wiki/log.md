@@ -4,6 +4,115 @@ Registro cronológico de las construcciones, despliegues y mantenimiento de la w
 
 ---
 
+## [2026-07-10] build | Multinal S.A.S. — demo interactiva Escenario B (`multinal-escenario-b-demo/`)
+
+* **Encargo:** duplicar `multinal-escenario-c-demo/` (app demo con 3 apartados: Presentación,
+  Simulador Interactivo, Panel de Movimientos) y reemplazar **únicamente** el apartado
+  "Presentación" por el contenido del deck `multinal-escenario-b/` (19 láminas), dejando
+  Simulador y Panel intactos. Carpeta final renombrada a `multinal-escenario-b-demo/`.
+* **Hallazgo técnico:** las 26 láminas de Escenario C dentro del demo usan un sistema de
+  componentes propio del shell (`.slide-frame`, `.slide-header`, navegación por
+  `data-slide`/`jumpToSlide()` en `script.js`), mientras que el deck de Escenario B usa un sistema
+  de diseño completamente distinto (`.s-header`, `.s-body`, `.feat-grid`, tokens propios). No era
+  un simple copiar/pegar — se consultó al usuario cómo integrar ambos.
+* **Decisión (confirmada con el usuario):** insertar el deck B **tal cual, con su propio diseño**
+  (no re-maquetarlo al estilo del shell C). Para lograrlo sin romper nada:
+  - Las 19 láminas de B se namespacearon bajo la clase `.b-deck` en una hoja de estilos nueva
+    (`docs/style-escenario-b.css`), con todos sus tokens y clases genéricas prefijadas `b-`
+    (`.b-gradient-text`, `.b-contact-card`, `.b-badge-confidential`, etc.) para no chocar con las
+    clases de igual nombre ya usadas por el shell/Simulador/Panel (`.gradient-text`,
+    `.contact-card`, `.badge-confidential`).
+  - Cada `<section>` de lámina B conserva las clases `slide` + `data-slide="N"` (1–19) que la
+    navegación existente (`navigateSlide()`, contador, barra de progreso) ya sabe manejar —
+    solo se le sumó la clase `bdeck-slide` (en vez de `.slide` propio de B) para aplicar su estilo
+    visual sin pisar el `.slide` de posicionamiento/show-hide del shell.
+  - Se copiaron a `docs/assets/` el logo `logo-cliente.png` y las 14 fuentes locales (`fonts/`)
+    que el deck B requiere vía `@font-face`.
+  - `state.totalSlides` en `script.js`: `26` → `19`; contador inicial `1 / 26` → `1 / 19`.
+* **Verificación:** confirmado con diff que `style.css`, `script.js` (salvo `totalSlides`) y
+  `README.md` quedaron sin cambios frente al original; las secciones de Simulador y Panel en
+  `index.html` son **byte-idénticas** al original. Navegación probada vía JS en el navegador
+  (loop completo de 19 láminas, cambio entre las 3 vistas) — sin errores de consola ni fallos de
+  red. El screenshot del navegador del entorno falló por un problema de infraestructura ajeno al
+  contenido (se reproduce en una página en blanco); se verificó por `get_page_text` + pruebas
+  funcionales en su lugar.
+* **Pendiente/nota para el usuario:** el `<title>` y la meta-descripción del `<head>` de
+  `multinal-escenario-b-demo/docs/index.html` siguen diciendo "Escenario C" (no se tocaron,
+  siguiendo la instrucción de modificar solo el apartado Presentación). Avisar si se desea
+  actualizarlos también.
+
+## [2026-07-10] build | Multinal S.A.S. — Plataforma Empresarial 100% Propia, Escenario C (26 láminas)
+
+* **Encargo:** Escenario C (la opción más ambiciosa de 2 para Multinal), a partir de 6 documentos
+  fuente (Documento 6C, Alcances RFI/RFP, Cadena de Valor AS-IS, Mapa de Procesos AS-IS,
+  Arquitectura Tecnológica AS-IS) y `Multinal SAS - Cotizacion C.xlsx` (11 hojas PRY).
+* **Decisión de granularidad (confirmada con el usuario):** el ERP propio agrupa 6 funciones de
+  negocio (Compras/Inventarios/Comercial/Facturación/Cartera/Despachos) — cada una recibió su
+  propia lámina en vez de una sola lámina "PRY-ERP", igual criterio aplicado por consistencia al
+  WMS propio (Recepción/Ubicaciones/Picking-Packing/Despachos-Trazabilidad, 4 láminas).
+* **Estructura (26 láminas):** Portada (badge "Escenario C") · Diagnóstico · Visión y 6 Principios
+  de Diseño (nueva lámina, sin precedente en B) · Mapa del Ecosistema (5 plataformas + banda de 6
+  agentes) · ERP (6 láminas) · WMS (4 láminas) · CRM Ampliado · Firma Electrónica · Gobierno de
+  Datos · 6 Agentes de IA (Logístico y Fidelización 100% nuevos; Comercial/Compras/Inventarios/
+  Cartera con tarjetas "BASE" heredadas del agente homólogo del Escenario B + tarjetas
+  "AMPLIACIÓN C" para las capacidades nuevas — decisión de diseño para no fabricar alcance no
+  sustentado en la fuente) · Sustitución de la Arquitectura Legada (nueva lámina: estado de
+  ILIMITADA/Siigo/Trazabilidad/Pedbox/Excel) · Inversión y Alcance (**sin cifra**) · Próximos pasos.
+* **Verificación:** medición programática de bounding boxes en las 26 láminas → 1 intrusión de
+  1px detectada y corregida (texto de `pay-note` recortado); 0 problemas tras el ajuste. Revisión
+  visual de portada y 2 láminas densas (CRM Ampliado 4 tarjetas, Sustitución Legada 5 tarjetas).
+* **Archivos:** `presentaciones/multinal-escenario-c/` (index.html, styles.css idéntico al de
+  Escenario B, assets/ reutilizados), PDF de 26 páginas exportado con Chrome headless.
+
+## [2026-07-10] marca | Nuevo estándar obligatorio: fondo gris claro frío + gradiente de marca
+
+* **Decisión del usuario:** el fondo gris claro neutro usado en Multinal Escenario B deja de ser
+  una excepción de un solo deck y pasa a ser el **estándar obligatorio para toda presentación
+  nueva** (`CLAUDE.md` Regla 2, reemplaza la regla de fondo oscuro de 2026-07-08). Se le suma un
+  requisito nuevo: la gama del **gradiente de marca del cliente** debe superponerse como un
+  `--bg-wash` sutil (~5–9% opacidad) sobre la base gris — no queda en fondo gris plano.
+* **Logo Campuslands corregido:** el PNG maestro (`recursos/Logo Campuslands Horizontal
+  Azul.png`) tiene relleno transparente muy asimétrico (138px arriba vs. 80px abajo sobre 885px
+  de alto) que lo hacía ver chico y descentrado a igual `height` CSS. Se recortó a su contenido
+  visible + padding simétrico ~6% para el deck de Multinal. Nueva regla en `CLAUDE.md` y
+  `wiki/temas-por-cliente.md`: **recortar siempre** el logo maestro antes de copiarlo a
+  `assets/` de un deck nuevo, nunca usar el PNG de `recursos/` tal cual.
+* **Pendiente (no ejecutado en esta sesión):** los decks previos a esta fecha (Miami Aqua
+  Tours, GreenMetal, Mchaileh, Compumax ×2, Ve a la Segura) siguen en el sistema oscuro legado
+  y probablemente arrastran el mismo defecto de logo sin recortar — no se tocaron porque el
+  usuario pidió actualizar específicamente el deck de Multinal; queda como trabajo futuro si se
+  solicita.
+* **`wiki/temas-por-cliente.md`** — receta §2 reescrita para el estándar claro; catálogo de
+  Multinal actualizado con los tokens reales (antes tenía los tokens oscuros previos a este
+  cambio).
+
+## [2026-07-10] ajuste | Multinal Escenario B — correcciones de dato + tema claro (excepción)
+
+* **Correcciones de contenido** (fuente: `_FullServices Cotizaciones Multinal (Proyectos).xlsx`,
+  hoja `PRY-008 - Gobierno de Datos`):
+  * Slide "Portal de Clientes" (PRY-002): se retiró la mención a FedEx en "Tracking logístico de
+    despachos" — Multinal opera flota propia de vehículos de despacho, no usa FedEx.
+  * Slide "Portal de Proveedores" (PRY-003): la tarjeta de escalabilidad ahora dice "integración
+    con Cadena de Valor" (antes "Workflow").
+  * **Renombrado global de PRY-006**: "Motor de Workflow Corporativo" → **"Cadena de Valor"** en
+    su propia lámina, el Mapa del Ecosistema y el tag del Agente 7E.
+  * **Nuevo módulo PRY-008 — Gobierno de Datos** (lámina 17/19): MDM, diccionario corporativo,
+    depuración del legado, linaje y — punto clave del cliente — estándares de captura por
+    **código de barras** que reemplazan los catálogos hoy dispersos en **Excel anidados** por
+    línea de producto, habilitando el mapeo automático del Portal de Proveedores (PRY-003). El
+    deck pasa de 13 a **14 módulos** (18 → **19 láminas**); actualizado el conteo en portada,
+    kicker, mapa del ecosistema e Inversión y Alcance.
+* **⛔ Excepción de tema — fondo claro (solo este deck):** por pedido explícito del usuario
+  ("SOLO SERA EN ESTA PRESENTACION"), `presentaciones/multinal-escenario-b/styles.css` rompe la
+  regla de fondo oscuro obligatorio del sistema de diseño: fondo gris claro frío (`--bg-0:#F2F3F5`
+  → `--bg-2:#FFFFFF`), texto oscuro (`--text-hi:#14161B`), acentos naranja/índigo profundizados
+  para contraste (`--cyan:#A6480A`, `--violet:#5A3FBF`), punto "Confidencial" en azul-cian frío
+  más saturado. El logo de Campuslands se cambió a la variante **azul** (antes blanca, invisible
+  sobre fondo claro). Esta excepción **no aplica a ningún otro deck** ni cambia la convención
+  general de `wiki/sistema-diseno.md`.
+
+---
+
 ## [2026-07-09] build | Multinal S.A.S. — Ecosistema Digital Corporativo, Escenario B (18 láminas)
 
 * **Encargo:** Escenario B de 2 propuestas para Multinal S.A.S., a partir de `Multinal SAS -

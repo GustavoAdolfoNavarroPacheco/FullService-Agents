@@ -35,30 +35,48 @@ El resto de `styles.css` es **idéntico** entre decks. Solo se re-definen estos 
 
 ## 2. Receta: del logo a la paleta
 
+> **Estándar vigente desde 2026-07-10 (Regla 2 de `CLAUDE.md`): fondo gris claro neutro y frío
+> + gradiente de marca superpuesto.** Los pasos 4–5 de abajo reflejan este estándar. Los decks
+> construidos antes de esta fecha usan el sistema oscuro legado (fondo casi negro teñido) y
+> **no se migran** salvo pedido explícito del usuario — ver nota al final.
+
 1. **Extrae** 1–2 colores dominantes del logo (los de marca; ignora negros/grises
    neutros). Define el **hue base H** (y un hue secundario si aplica).
 2. **Gradiente insignia (`--grad-brand`):** 3–4 paradas **análogas** alrededor de H
    (rota ±25–55°), de claro-brillante a medio. Deriva `--grad-cyan` (2 paradas frías del
    set) y `--grad-violet` (2 alternas) para variar entre láminas.
-3. **Sólidos** `--cyan/--blue/--violet/--magenta`: remapea a las 4 paradas (los nombres se
-   conservan por compatibilidad aunque el color ya no sea literalmente cian/violeta).
-4. **Fondos** `--bg-0/1/2` y `--bg-deep`: toma el hue H con **saturación baja (S≈10–22%)**
-   y **luminosidad muy baja (L≈4–9%)**. Así el negro-base queda teñido (verde-negro,
-   azul-noche, ámbar-negro…). `--bg-0` es el más profundo; `--bg-2` (tarjetas) el más claro.
-5. **Glows** `--bg-glow-a/b`: dos acentos a alpha **.10–.14**.
-6. **Texto** `--text-mid/lo/faint`: tinte muy desaturado hacia H (cohesión, no color pleno).
-   `--text-hi` siempre `#FFFFFF`.
-7. **Bordes** `--card-border`: `rgba(hue, .14–.20)`.
+3. **Sólidos** `--cyan/--blue/--violet/--magenta`: remapea a las 4 paradas, pero **profundizadas
+   para contraste sobre claro** (p. ej. un naranja de marca vívido se oscurece a un naranja
+   quemado para texto/labels legibles en blanco). Los nombres se conservan por compatibilidad.
+4. **Fondos** `--bg-0/1/2/deep`: **gris claro neutro y frío**, gama `#E2E4E9` → `#FFFFFF`
+   (`--bg-2`, el de las tarjetas, siempre el más claro/blanco). No se tiñe con el hue de marca
+   directamente — el color de marca vive en el `--bg-wash`, no en la base.
+5. **`--bg-wash` (nuevo, obligatorio):** `linear-gradient` diagonal con 3–4 paradas de los
+   colores de marca en `rgba(...,.05–.09)`, superpuesto sobre la base gris junto a los dos
+   `--bg-glow-a/b` radiales (también bajados a alpha **.08–.12** en este estándar claro, más
+   suaves que en el sistema oscuro). Así el fondo "respira" el gradiente de marca sin perder
+   neutralidad. Ver receta completa en `presentaciones/multinal-escenario-b/styles.css`.
+6. **Texto:** `--text-hi` casi negro (`#14161B`–`#1A1D23`), `--text-mid/lo/faint` grises fríos
+   descendentes, **nunca** blanco/crema (eso era del sistema oscuro).
+7. **Bordes** `--card-border`: `rgba(20,25,35,.08–.12)` — neutro oscuro suave, no del hue de marca.
+8. **Logo Campuslands:** recortar el PNG maestro a su contenido visible (bbox) + padding
+   simétrico ~6% antes de copiarlo a `assets/` del deck — el archivo maestro trae relleno
+   transparente irregular que lo hace ver chico/asimétrico si se usa tal cual.
 
 ### Reglas de seguridad
-- **Legibilidad primero:** fondos muy oscuros (contraste AA con blanco); nada neón saturado
-  como fondo. Los gradientes brillantes solo en texto clave, bordes, píldoras y glows.
+- **Legibilidad primero:** con fondo claro, todo texto de color (`--cyan`, `--violet`, etc.)
+  debe profundizarse hasta pasar contraste AA sobre blanco — nunca copiar tal cual un tono
+  vívido de marca pensado para fondo oscuro.
 - **Marca cálida** (ámbar/rojo/naranja): el punto "Confidencial" y alertas se ponen en un
-  **acento frío** (cian) para que resalte; con marca fría, el punto sigue en ámbar.
+  **acento frío** (cian/azul) para que resalte; con marca fría, el punto sigue en ámbar.
 - **Dos clientes con el mismo color** (p. ej. GreenMetal y Mchaileh, ambos verdes): sepáralos
-  por **trayectoria de gradiente + tinte de fondo** para que no se vean iguales. GreenMetal:
-  **lima-forward → teal** (termina cian-menta), fondo casi neutro. Mchaileh: **hoja/kelly-forward
-  → esmeralda** (se queda en verde, sin teal), fondo **bosque teñido**.
+  por **trayectoria de gradiente + wash** para que no se vean iguales.
+- **Decoraciones (esquinas, anillos, glows, wash):** verificar SIEMPRE en el navegador antes de
+  entregar — un decorativo pensado para fondo oscuro (opacidad, color) puede volverse invisible
+  o chocar visualmente sobre fondo claro.
+- **Legado oscuro:** los decks previos a 2026-07-10 (Miami Aqua Tours, GreenMetal, Mchaileh,
+  Compumax, Ve a la Segura) mantienen su fondo oscuro teñido tal cual — no se retocan salvo
+  que el usuario lo pida explícitamente para ese cliente.
 
 ---
 
@@ -134,20 +152,22 @@ demo). Solo se muestran los tokens que cambian.
 Usado sin logo oficial (evento/boletería, sin PNG de marca): wordmark recreado con `.wm` en vez de
 `<img>` — ver contrato de wordmark abajo.
 
-### Multinal — naranja del ícono → índigo del wordmark
+### Multinal — naranja del ícono → índigo del wordmark (referencia del estándar claro)
 > Derivado del logo real: naranja vivo (`#FF7A00`, óvalos del isotipo) hacia el índigo-violeta
 > del wordmark (`#312883`). Marca **cálida** → el punto "Confidencial" se pone en cian frío
-> por la regla de seguridad. Usado en `presentaciones/multinal-escenario-b/`.
+> por la regla de seguridad. **Primer deck en fondo gris claro + `--bg-wash`** (estándar desde
+> 2026-07-10). Usado en `presentaciones/multinal-escenario-b/`.
 ```css
---bg-0:#0B0704; --bg-1:#150D07; --bg-2:#1E140B; --bg-deep:#170F08;
---bg-glow-a:rgba(255,122,0,.13); --bg-glow-b:rgba(74,54,167,.13);
---cyan:#FFB24D; --blue:#FF7A00; --violet:#7A5AD1; --magenta:#3B2A8C;
---grad-brand:linear-gradient(100deg,#FFC670 0%,#FF7A00 38%,#7A5AD1 72%,#3B2A8C 100%);
---grad-cyan:linear-gradient(120deg,#FFC670,#FF7A00);
---grad-violet:linear-gradient(120deg,#9575E0,#3B2A8C);
---card-border:1px solid rgba(220,150,90,.16);
---text-mid:#E4D6C6; --text-lo:#9C8A78; --text-faint:#5A4C40;
---dot-confidential:#35D0F0; --dot-confidential-glow:rgba(53,208,240,.7);
+--bg-0:#F2F3F5; --bg-1:#E9EBEF; --bg-2:#FFFFFF; --bg-deep:#E2E4E9;
+--bg-glow-a:rgba(255,122,0,.09); --bg-glow-b:rgba(59,42,140,.09);
+--bg-wash:linear-gradient(135deg, rgba(255,155,61,.07) 0%, rgba(255,122,0,.05) 32%, rgba(122,90,209,.05) 66%, rgba(59,42,140,.07) 100%);
+--cyan:#A6480A; --blue:#FF7A00; --violet:#5A3FBF; --magenta:#3B2A8C;
+--grad-brand:linear-gradient(100deg,#FF9B3D 0%,#FF7A00 38%,#7A5AD1 72%,#3B2A8C 100%);
+--grad-cyan:linear-gradient(120deg,#FF9B3D,#FF7A00);
+--grad-violet:linear-gradient(120deg,#7A5AD1,#3B2A8C);
+--card-border:1px solid rgba(20,25,35,.10);
+--text-hi:#14161B; --text-mid:#3D4451; --text-lo:#6B7280; --text-faint:#9CA3AF;
+--dot-confidential:#0E8FB0; --dot-confidential-glow:rgba(14,143,176,.45);
 ```
 
 ### Ejemplos de rango (para marcas fuera de la gama fría)

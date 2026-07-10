@@ -61,14 +61,26 @@ el trabajo de construcción, despliegue y mantenimiento de esta wiki.
 ### Construir una presentación (Build)
 1. Recibo los **alcances** del proyecto + datos del cliente.
 2. Leo `wiki/marca-campuslands.md`, `wiki/sistema-diseno.md`, `wiki/plantilla-base.md` y `wiki/temas-por-cliente.md`.
-3. 🎨 **REGLA OBLIGATORIA — Paleta por cliente:** derivo la paleta del deck (**fondo oscuro
-   teñido incluido**) del **logo del cliente**, siguiendo la receta y el contrato de tokens de
-   `wiki/temas-por-cliente.md`. Cada empresa debe verse distinta; el cian/violeta es solo el
-   tema *default*. La incluyo en el plan del paso 4.
-   > **Regla 2 (2026-07-08):** todo diseño se **inspira en los colores de la marca**, pero
-   > **siempre sobre el diseño oscuro actual** — lo que cambia es solo el **hue de acento**
-   > (p. ej. Azul → Rojo, cian → verde) y el tinte del fondo; el esquema oscuro base, la
-   > tipografía y los layouts NO cambian. Nunca fondos claros ni cambio de estilo.
+3. 🎨 **REGLA OBLIGATORIA — Paleta por cliente:** derivo la paleta del deck (**fondo gris claro
+   frío + gradiente de marca incluidos**) del **logo del cliente**, siguiendo la receta y el
+   contrato de tokens de `wiki/temas-por-cliente.md`. Cada empresa debe verse distinta; el
+   naranja/índigo de Multinal es solo la referencia de la receta, no un color fijo. La incluyo
+   en el plan del paso 4.
+   > **Regla 2 (2026-07-10, reemplaza la de 2026-07-08):** el **fondo estándar de toda
+   > presentación nueva es gris claro neutro y frío** (`--bg-0/1/2/deep` en la gama `#E2E4E9` →
+   > `#FFFFFF`), con una **capa de gradiente sutil de los colores de marca del cliente**
+   > (`--bg-wash`, ~5–9% de opacidad) superpuesta — nunca un lavado de color plano ni saturado.
+   > Tipografía y textos pasan a tonos oscuros (`--text-hi` casi negro) para contraste. Layouts
+   > y tokens de marca (`--grad-brand`, `--cyan/--violet/...`) se ajustan por contraste sobre
+   > claro (más profundos que en el sistema oscuro legado). Referencia de receta completa:
+   > `presentaciones/multinal-escenario-b/styles.css` (primer deck construido con este estándar).
+   > El sistema oscuro queda como legado de decks previos, no se retroaplica sin pedido explícito.
+   > **Verificación de decoraciones:** toda decoración agregada (esquinas, anillos, glows, wash)
+   > se revisa visualmente en el navegador antes de entregar — sin excepción.
+   > **Logo Campuslands:** el PNG maestro en `recursos/` trae relleno transparente irregular;
+   > antes de copiarlo a `assets/` de un deck nuevo, recortarlo a su contenido visible
+   > (`Image.getbbox()`) + un padding simétrico ~6% de la altura, para que se vea nítido, del
+   > tamaño correcto y centrado — nunca copiar el PNG maestro tal cual. Verificar visualmente.
 4. ⛔ **REGLA OBLIGATORIA — Plan antes de diseñar:** ANTES de escribir una sola línea
    de HTML/CSS, le presento al usuario **qué va a tener cada diapositiva** (contenido
    + tratamiento visual + **paleta propuesta**, slide por slide). **NO construyo hasta que el usuario confirme.**
