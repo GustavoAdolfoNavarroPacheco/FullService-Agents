@@ -1,4 +1,4 @@
-# FullService-Agents
+# FullService - Agentes
 
 Monorepo de **agentes de IA** para el flujo comercial de **Campuslands — Full Service**. Cada carpeta contiene un agente especializado que automatiza una etapa del pipeline de ventas: desde la presentación comercial al cliente, pasando por la cotización técnica, hasta la redacción del contrato final.
 
