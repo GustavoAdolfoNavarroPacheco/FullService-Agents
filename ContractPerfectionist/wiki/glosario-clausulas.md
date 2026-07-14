@@ -26,6 +26,12 @@ Catálogo de categorías de cláusulas que suelen aparecer en los contratos de l
 | Ley aplicable y controversias | Jurisdicción y mecanismo de resolución de conflictos | Contrato Madre |
 | Firmas | Cierre y validez de firmas electrónicas | Contrato Madre |
 
+## Historial de versiones — Contrato Madre
+
+Registro de cambios a `recursos/contrato-madre/Contrato Madre - Plantilla Base.docx` (la plantilla de contenido legal, no la de diseño). Cada vez que se reemplace ese archivo, agregar una entrada aquí con fecha, qué cambió y por qué — para poder saber si un contrato ya generado quedó desactualizado respecto al estándar vigente.
+
+- **[2026-07-09] Versión inicial registrada.** Primera versión del Contrato Madre incorporada al repositorio (commit `03c44e5`). No hay historial de cambios previo a esta fecha; se toma como línea base para futuras comparaciones.
+
 ## Ajustes validados por proyecto
 
 _(Cuando un proyecto requiera una variación reutilizable de una cláusula estándar, y el usuario la valide, documentarla aquí con fecha y motivo.)_
