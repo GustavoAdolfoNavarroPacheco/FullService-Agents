@@ -1814,3 +1814,7 @@ regeneró `gaspais-chilco.pdf`.
 * Lámina 6: "Plataforma LMS KHC" → "Plataforma LMS" (los clientes no entenderían el término interno). También se quitó "KHC" del portal (descripción y palabras clave) y del índice de la wiki.
 * De la conversación NO se aplicó (no se pidió y el resumen está transcrito por IA y es ambiguo): reordenar los productos según Diego (LMS, agente maestro con IA, "Orbit con llamadas", agente de RR. HH. "en Casablanca y Nébula", facturación electrónica), fusionar/quitar la lámina 5 ni agregar una sección de legalizaciones. Queda para confirmar con el usuario.
 
+## [2026-09-30] ajuste | Globant — lámina 3, tarjeta de margen como "Escalabilidad del negocio" (4,7 % → 30 %)
+* A pedido del usuario la tarjeta "Margen neto" (4,7 % → 39,8 %) pasa a **"Escalabilidad del negocio"**: "4,7 % → 30 %" y la frase "Un negocio que inicia en 4,7 % de margen neto y llega hasta un 30 %". Se quitó el detalle "año 2: 37,7 %".
+* ⚠️ **El 30 % no sale del Excel.** `06_P&G` fila 45 (Margen NETO): año 1 = 4,7 %, año 2 = 37,7 %, año 3 = 39,8 %, acumulado 3 años = 34,5 %. El 30 % lo dio el usuario. La nota al pie de la lámina sigue citando el Excel como fuente, y la tarjeta vecina dice "Escalabilidad que llega al 34 %": dos tarjetas contiguas con metas distintas (34 % y 30 %). Pendiente de confirmar con el usuario si el 30 % es una meta conservadora deliberada y, de serlo, aclararlo en la nota.
+
