@@ -1953,3 +1953,9 @@ regeneró `gaspais-chilco.pdf`.
 * **Pedido del usuario:** «ajusta el tamaño de ambos logos (Campuslands y Hubux), su visualización en estas presentaciones es muy grande».
 * **Cambio (solo `hubux/`):** alto del logo de Campuslands en el cierre 64 → **46 px**, en la portada 44 → **38 px**, en la barra del visor 44 → **40 px** (mínimo que exige el verificador, R12; no se puede bajar más sin romper la regla). Hubux sigue con `--k-cliente` 1,0568 (áreas iguales, Δ 0 %). Los demás decks y la plantilla no se tocaron (el pedido decía «estas presentaciones»; se interpretó como este deck).
 * **Verificado:** APROBADO (0 errores, 0 avisos); PDF regenerado; portada y cierre revisados a la vista.
+
+## [2026-10-02] ajuste | Hubux: bordes de los planes (lám. 5) y pie del cierre (lám. 7)
+* **Pedido del usuario:** lámina 5 — eliminar la píldora «Precio de entrada»; borde **azul** en Plan Gerencial, **amarillo** en Plan Estándar + Equipo, **gris claro** en Plan Estándar; reemplazar la imagen de la tarjeta 3 por la que adjuntó. Lámina 7 — eliminar el texto «Cierre».
+* **Hecho:** bordes de **3 px** (`.plan--gray` #D5D9E2, `.plan--blue` navy #000087, `.plan--gold` #F4B422); se quitó el marco neón del Plan Estándar (ya no hay neón en la lámina). «Azul» interpretado como el azul de marca (navy), no el celeste. Foto de la tarjeta 3 sustituida por `puesto-equipo.jpg` (nueva, 1165×1350) con `object-position` 50 % 47 %. Lámina 7: las migas del pie quedan `| campuslands | propuesta | hubux |` (sin «cierre»).
+* **Excepción a la regla R14 (sin bordes):** son bordes pedidos explícitamente por el usuario; miden 3 px, por lo que el verificador (umbral 2,6 px) los admite.
+* **Verificado:** APROBADO (0 errores, 0 avisos); PDF regenerado; láminas 5 y 7 revisadas a la vista.
