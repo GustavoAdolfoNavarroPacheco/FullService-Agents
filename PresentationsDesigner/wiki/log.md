@@ -1948,3 +1948,8 @@ regeneró `gaspais-chilco.pdf`.
 * **Pedido del usuario:** «quita el fondo que le pusiste al logo de Hubux, mantén el logo como estaba originalmente».
 * **Cambio:** se eliminó la clase `.chip` y sus tres usos (barra del visor, portada, cierre); el logo va directo sobre blanco. Contraste del logo sobre blanco 1,3–1,55 : 1 (< 3 : 1): **excepción aceptada por el usuario** a la regla de contraste del logo del cliente; el verificador no la mide. `--k-cliente` y la «×» centrada no cambian.
 * **Verificado:** `verificar_deck.py` APROBADO (0 errores, 0 avisos); PDF de 7 páginas regenerado; revisión a la vista de portada y cierre.
+
+## [2026-10-02] ajuste | Hubux: logos más pequeños
+* **Pedido del usuario:** «ajusta el tamaño de ambos logos (Campuslands y Hubux), su visualización en estas presentaciones es muy grande».
+* **Cambio (solo `hubux/`):** alto del logo de Campuslands en el cierre 64 → **46 px**, en la portada 44 → **38 px**, en la barra del visor 44 → **40 px** (mínimo que exige el verificador, R12; no se puede bajar más sin romper la regla). Hubux sigue con `--k-cliente` 1,0568 (áreas iguales, Δ 0 %). Los demás decks y la plantilla no se tocaron (el pedido decía «estas presentaciones»; se interpretó como este deck).
+* **Verificado:** APROBADO (0 errores, 0 avisos); PDF regenerado; portada y cierre revisados a la vista.
