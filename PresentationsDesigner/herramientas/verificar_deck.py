@@ -25,9 +25,13 @@ Qué mide (en Chromium headless, lámina por lámina, a tamaño real 1056×594 p
 Sale con código 1 si hay ERRORES. Los AVISOS (⚠) piden revisión visual pero no bloquean.
 Esta herramienta NO sustituye la mirada: después de pasar, hay que ver cada lámina (--png-dir) y justificar el reparto.
 """
-import argparse, json, os, re, subprocess, sys, tempfile, shutil
+import argparse, json, os, pathlib, re, subprocess, sys, tempfile, shutil
+for _s in (sys.stdout, sys.stderr):
+    try: _s.reconfigure(encoding='utf-8')
+    except Exception: pass
 
-CHROME_CANDIDATES = ['/opt/pw-browsers/chromium-1194/chrome-linux/chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser',
+CHROME_CANDIDATES = [r'C:\Program Files\Google\Chrome\Application\chrome.exe', r'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe',
+                     '/opt/pw-browsers/chromium-1194/chrome-linux/chrome', '/usr/bin/chromium', '/usr/bin/chromium-browser',
                      '/usr/bin/google-chrome', 'chrome', 'google-chrome', 'chromium']
 
 def find_chrome():
@@ -262,7 +266,7 @@ def main():
     tmp = os.path.join(deck, '__verificar.html'); open(tmp, 'w', encoding='utf-8').write(probe)
     try:
         out = subprocess.run([chrome, '--headless', '--no-sandbox', '--disable-gpu', '--allow-file-access-from-files', '--window-size=1200,900',
-                              '--virtual-time-budget=15000', '--dump-dom', 'file://' + tmp], capture_output=True, text=True, timeout=120).stdout
+                              '--virtual-time-budget=15000', '--dump-dom', pathlib.Path(tmp).as_uri()], capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=120).stdout
     finally:
         os.remove(tmp)
     m = re.search(r'<pre id="__vf"[^>]*>(.*?)</pre>', out, re.S)
@@ -298,7 +302,7 @@ def main():
     if a.pdf or a.png_dir:
         pdf = os.path.abspath(a.pdf or os.path.join(tempfile.gettempdir(), 'verificar_deck.pdf'))
         subprocess.run([chrome, '--headless', '--no-sandbox', '--disable-gpu', '--allow-file-access-from-files', '--no-pdf-header-footer',
-                        '--virtual-time-budget=10000', f'--print-to-pdf={pdf}', 'file://' + idx], capture_output=True, text=True, timeout=120)
+                        '--virtual-time-budget=10000', f'--print-to-pdf={pdf}', pathlib.Path(idx).as_uri()], capture_output=True, text=True, encoding='utf-8', errors='replace', timeout=120)
         try:
             import pymupdf
             d = pymupdf.open(pdf); names = sorted({f[3].split('+')[-1] for p in d for f in p.get_fonts() if f[3]} | {sp['font'].split('+')[-1] for p in d for b in p.get_text('dict')['blocks'] if b['type']==0 for l in b['lines'] for sp in l['spans']})
