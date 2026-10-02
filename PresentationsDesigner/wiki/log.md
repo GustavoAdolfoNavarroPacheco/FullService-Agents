@@ -1943,3 +1943,8 @@ regeneró `gaspais-chilco.pdf`.
 * **Nota:** la empresa de la 2.ª fila (logo «R» azul) no tiene nombre legible → `alt` genérico. «campers.tribu.team» sale solo del texto oculto del PDF (p.7).
 * **Verificado:** `verificar_deck.py` APROBADO (0 errores, 0 avisos); PDF de 7 páginas, solo Poppins; revisión a la vista de las 7 láminas (se corrigió el desborde de la lámina 4, la alineación de las tarjetas de la 5 y puntos decorativos que cruzaban texto) y del visor. Portal: entrada `hubux` (34 decks).
 * **Herramientas:** `verificar_deck.py` ahora corre en Windows (ruta de Chrome, `file://` con `Path.as_uri()`, salida UTF-8).
+
+## [2026-10-02] ajuste | Hubux: se quita la placa navy del logo de Hubux
+* **Pedido del usuario:** «quita el fondo que le pusiste al logo de Hubux, mantén el logo como estaba originalmente».
+* **Cambio:** se eliminó la clase `.chip` y sus tres usos (barra del visor, portada, cierre); el logo va directo sobre blanco. Contraste del logo sobre blanco 1,3–1,55 : 1 (< 3 : 1): **excepción aceptada por el usuario** a la regla de contraste del logo del cliente; el verificador no la mide. `--k-cliente` y la «×» centrada no cambian.
+* **Verificado:** `verificar_deck.py` APROBADO (0 errores, 0 avisos); PDF de 7 páginas regenerado; revisión a la vista de portada y cierre.
