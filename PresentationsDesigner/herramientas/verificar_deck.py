@@ -13,7 +13,7 @@ Qué mide (en Chromium headless, lámina por lámina, a tamaño real 1056×594 p
      herramientas/igualar_logos.py), Campuslands primero (izq→der), sin deformar, versión a color sobre arena.
      Entre ambos va una «×» (no una línea), centrada en vertical con los logos (±2 px). Prohibido el rótulo «Confidencial».
      Los logos van SOLO en portada y cierre (+ barra del visor): una lámina de contenido con logos arriba a la izquierda es error.
-     Sin indicador de página «NN / TT» en el pie; sin resplandor celeste en el fondo; sin borde dorado en banners/franjas.
+     Sin indicador de página/módulo (puntos, «NN / TT») en ninguna parte de la lámina (solo el numeral grande .ghost); sin resplandor celeste en el fondo; sin borde dorado en banners/franjas.
   4. Tipografía: solo Poppins (400/900), Roboto Mono (400) y Nutmeg (Brandbook p.10).  Tamaño mínimo 9 px.
   5. Geometría: nada fuera de la lámina, nada invadiendo el pie, texto recortado, huecos verticales grandes.
   6. Contraste del texto (WCAG: 4.5:1 normal · 3:1 grande/negrita) contra su fondo real.
@@ -67,6 +67,9 @@ JS = r"""
     if (/rgba?\(\s*44\s*,\s*170\s*,\s*255/.test(bgTxt)) S.err.push('Fondo con resplandor/difuminación CELESTE: prohibido (ajuste del usuario); usar solo el resplandor violeta suave.');
     { const pi = [...sl.querySelectorAll('.ft *, .s-footer *')].find(e => /^\s*\d{1,2}\s*\/\s*\d{1,2}\s*$/.test(e.textContent) && !e.children.length);
       if (pi) S.err.push('Indicador de página «NN / TT» en el pie: prohibido (ajuste del usuario); el visor ya muestra «N / total».'); }
+    { const dots = [...sl.querySelectorAll('[class*="dots"],[class*="pager"],[class*="pagination"],[class*="stepper"]')].filter(e => !decor(e));
+      const txt = [...sl.querySelectorAll('*')].find(e => !e.children.length && !decor(e) && !e.closest('.ft,.s-footer') && /^\s*\d{1,2}(\s*[·,]\s*\d{1,2})*\s*\/\s*\d{1,2}\s*$/.test(e.textContent));
+      if (dots.length || txt) S.err.push('Indicador de página/módulo (puntos y/o «NN / TT») en la lámina: prohibido (ajuste del usuario); solo se conserva el numeral grande de sección (.ghost).'); }
     sl.querySelectorAll('[class*="reading"],[class*="banner"],[class*="note"],[class*="franja"]').forEach(e => { const b = getComputedStyle(e);
       const col = parse(b.borderTopColor); if (parseFloat(b.borderTopWidth) >= 1.5 && col && col.a > 0.3 && near([244,180,34],[col.r,col.g,col.b],6)) S.err.push('Banner/franja con borde dorado (neón): prohibido; el marco neón es solo para un dato/tarjeta clave (' + e.className + ').'); });
     if (NOCONF.test(sl.textContent)) S.err.push('Aparece el rótulo «Confidencial»: está prohibido (regla del usuario).');

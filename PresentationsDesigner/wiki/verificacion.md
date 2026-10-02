@@ -20,7 +20,7 @@ Requiere Chromium y `pip install pymupdf`. Si el usuario pidió más de 10 lámi
 | Rótulo «Confidencial» | no aparece (ni visor ni láminas) | R8 |
 | Logos en láminas de contenido | ninguno (solo portada/cierre, que sí deben llevarlos) | R10 |
 | Fondo | sin resplandor celeste (`rgb(44,170,255)`) | R10 |
-| Pie | sin indicador `NN / TT` | R10 |
+| Indicadores | sin `NN / TT` ni filas de puntos (`*dots*`, `pager`, `stepper`) en ninguna parte; solo el numeral `.ghost` | R10 |
 | Banners/franjas | sin borde dorado | R11 |
 | Bloques superpuestos | ninguna tarjeta/franja pisa a otra (≥ 50 px) | calidad |
 | Texto dentro de su tarjeta | el texto no sobresale de la tarjeta/franja que lo contiene | calidad |

@@ -39,7 +39,7 @@ Si el usuario pide algo que contradiga el Brandbook, lo señalo antes de hacerlo
    marco neón dorado (solo en **un dato/tarjeta clave**; **nunca** en banners/franjas), numerales grandes, comillas doradas, migas de pan, tarjetas navy/violeta como acentos).
    **Fondo de portada y cierre** (`.deco-cover`): el estilo de la portada original —**anillos concéntricos finos + resplandor central + dos «hojas» laterales curvas**— con colores de la
    paleta y **baja saturación** (violeta/celeste/navy con alfa bajo). **No** chevrones `<`/`>` ni manchas difuminadas. Catálogo y clases en `wiki/sistema-diseno.md`.
-   **Pie de lámina:** lema + migas de pan; **sin indicador de página «NN / TT»** (el visor ya muestra «N / total»).
+   **Pie de lámina:** lema + migas de pan; **sin indicador de página/módulo en ninguna parte** (ni «NN / TT» ni la fila de puntos «● ○ ○ ○ ○ 01 / 05» junto al título): solo se conserva el **numeral grande** de sección `.ghost`. El visor ya muestra «N / total».
    **Portada:** el pie (Preparado para / por / Fecha) va en **Poppins** (no Roboto Mono) y «Fecha» muestra **Mes y Año** (p. ej. «Octubre 2026»), nunca solo el año.
 6. **MÁXIMO 10 LÁMINAS.** Solo se supera si el usuario lo pide **textualmente** (y entonces uso `--max-slides N`). Antes de añadir, **fusionar** (`wiki/plantilla-base.md`).
 7. **VERIFICACIÓN VISUAL RIGUROSA** de espacios, distribución (aprovechar el espacio útil: tarjetas sin mitades vacías, tipografía lo más grande que quepa), colores y fuentes en **cada build y cada ajuste**: `verificar_deck.py` en APROBADO **y** revisión a la vista de cada
