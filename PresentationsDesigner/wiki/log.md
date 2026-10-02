@@ -1842,3 +1842,10 @@ regeneró `gaspais-chilco.pdf`.
   - Blanco `#FFFFFF` no es color de marca: se usa solo para texto/logo sobre oscuro y superficie de tarjeta, **nunca como fondo de lámina** (decisión mía a partir de la regla de fondos; confirmar con el usuario).
 * **Pendientes / límites:** (1) **Nutmeg** (tipografía de "destacados") es comercial (W Type Foundry) y no está licenciada en el repo: los destacados usan Poppins Black hasta tener el archivo. (2) El logotipo del **slogan GO FOR IT!** no tiene archivo en `recursos/`. (3) No hay fotografías de marca en el repo (el Brandbook las usa con *overlay* navy/violeta). (4) Los decks anteriores **no se migraron**; el verificador los rechaza porque siguen el sistema v2 — migrarlos requiere pedido explícito.
 
+
+## [2026-10-02] prueba | Rediseño de prueba `globant-dojo-v3` con el sistema v3
+* **Pedido:** antes de fusionar la reconceptualización, desarrollar un rediseño de una presentación pasada **sin afectar la original** (`presentaciones/globant-dojo/` y la copia `globant-campuslands` quedan intactas). Se eligió el deck Globant.
+* **Resultado:** `presentaciones/globant-dojo-v3/` (8 láminas, PDF incluido). `verificar_deck.py --pdf`: 0 errores, 0 avisos; logos 30/30 px en cabeceras y 64/64 px en portada/cierre; fondos navy/arena/violeta alternados.
+* **Decisiones:** (1) el logo de Globant solo existe en versión oscura/lima → en láminas oscuras el co-branding va sobre una **placa arena** con ambos logos a color (se prefiere a recolorear el logo del cliente, prohibido p.16); (2) el portafolio (LMS, facturación, agentes) se partió en 3 láminas por la densidad de Roboto Mono; (3) no se registró en el portal.
+* **Mejora al verificador:** nueva comprobación «imagen vs contenedor» (detectó logos de cliente que desbordaban su tarjeta; probada con desbordes de 30 px y 7 px).
+* **Límite observable:** las alturas de los logos son iguales (medido), pero el de Globant (5,09 : 1) se ve más ancho que el de Campuslands a color (3,20 : 1); la regla R2 se midió por altura.

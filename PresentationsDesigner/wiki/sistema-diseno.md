@@ -92,6 +92,7 @@ Usar solo los pares de [[marca-campuslands]] §4 (✅). Etiquetas pequeñas sobr
 - **Fuentes y PDF:** las `@font-face` de láminas ocultas no se descargan solas; `script.js` ejecuta `preloadAllFonts()` y el export usa
   `--virtual-time-budget`. Roboto Mono (variable) sale como **Type3** en el PDF: es normal; lo que se vigila es que **no** aparezcan
   Liberation/Georgia/Times/Arial.
+- **Densidad con Roboto Mono:** es ~25 % más ancha que una proporcional; una lámina que cabía con tipografías anteriores debe **partirse en dos** (caso Globant: LMS + facturación → 2 láminas) en lugar de reducir por debajo de 9 px.
 - **Logos en `<img>`:** solo `height` + `width:auto`; el logo del cliente se recorta a su contenido (alfa) y se prueba que no se deforme.
 - **Imágenes de placeholder** no deben usar fuentes del sistema (generar PNG con Poppins) para no contaminar el PDF.
 - **Decoración** (`aria-hidden`, `.ghost`, `.chev`) sangra a propósito y queda fuera de las mediciones de desborde; el texto nunca.

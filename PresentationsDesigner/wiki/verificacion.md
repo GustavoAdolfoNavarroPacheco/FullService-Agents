@@ -23,6 +23,7 @@ Requiere Chromium y `pip install pymupdf`. Si el usuario pidió más de 10 lámi
 | Texto mínimo | ≥ 9 px | legibilidad |
 | Contraste | ≥ 4,5 : 1 (≥ 3 : 1 si es grande) | accesibilidad |
 | Geometría | nada fuera de la lámina, nada sobre el pie, nada recortado | calidad |
+| Imagen vs contenedor | ninguna `<img>` excede su caja (logos de cliente, etc.) | calidad |
 | Hueco vertical | ≤ 20 % de la lámina (no aplica a portada/cierre centrados) | balance |
 | PDF | páginas = láminas; sin fuentes de respaldo | entrega |
 | `<head>` | `<title>` = razón social del cliente · favicon = isotipo | CLAUDE.md |

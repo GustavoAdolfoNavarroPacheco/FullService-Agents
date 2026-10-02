@@ -81,8 +81,11 @@ JS = r"""
         if (Math.abs(ratio-drawn)/ratio > 0.03) S.err.push(`Logo deformado (${i.src.split('/').pop()}): proporción ${ratio.toFixed(2)} → ${drawn.toFixed(2)}.`);
         const f = i.src.toLowerCase(), isWhite = /blanc|white/.test(f), isColor = /color|azul/.test(f);
         if (i.dataset.logo === 'campuslands' && root.dataset.bg) {
-          if (dark && !isWhite) S.err.push('Sobre fondo oscuro el logo Campuslands debe ser la versión BLANCA.');
-          if (!dark && !isColor) S.err.push('Sobre fondo arena el logo Campuslands debe ser la versión A COLOR.');
+          let e = i.parentElement, effDark = dark, plate = false;      // fondo efectivo: placa sólida más cercana, si existe
+          while (e && e !== root.parentElement) { const c = parse(getComputedStyle(e).backgroundColor); if (c && c.a > 0.55) { effDark = lum(c) < 0.2; plate = e !== root; break; } e = e.parentElement; }
+          const where = plate ? 'sobre su placa' : 'sobre el fondo';
+          if (effDark && !isWhite) S.err.push(`Logo Campuslands ${where} OSCURO debe ser la versión BLANCA.`);
+          if (!effDark && !isColor) S.err.push(`Logo Campuslands ${where} CLARO debe ser la versión A COLOR.`);
         }
       });
     } else if (!sl.classList.contains('sin-logos')) S.warn.push('La lámina no tiene logos.');
@@ -139,6 +142,11 @@ JS = r"""
       const o = getComputedStyle(el);
       if (el !== root && /(hidden|clip)/.test(o.overflow+o.overflowY) && (el.scrollHeight > el.clientHeight+2 || el.scrollWidth > el.clientWidth+2) && el.clientHeight>0) clip.push(el.tagName.toLowerCase()+'.'+el.className);
     });
+    // imágenes (logos, fotos) que se salen de su contenedor inmediato: pisan a sus vecinos aunque sigan dentro de la lámina
+    const esc = [];
+    sl.querySelectorAll('img').forEach(im => { if (decor(im)) return; const r = im.getBoundingClientRect(), pr = im.parentElement.getBoundingClientRect();
+      if (r.width > 1 && (r.left < pr.left-2 || r.right > pr.right+2 || r.top < pr.top-2 || r.bottom > pr.bottom+2)) esc.push((im.alt||im.src.split('/').pop())+` (${Math.max(pr.left-r.left, r.right-pr.right, pr.top-r.top, r.bottom-pr.bottom).toFixed(0)}px)`); });
+    if (esc.length) S.err.push('Imagen desborda su contenedor: ' + esc.join(', '));
     if (out.length) S.err.push('Contenido fuera de la lámina: ' + [...new Set(out)].slice(0,4).join(', '));
     if (over.length) S.err.push('Contenido invade el pie de página: ' + [...new Set(over)].slice(0,3).join(', '));
     if (clip.length) S.err.push('Texto/contenido recortado por overflow: ' + [...new Set(clip)].slice(0,4).join(', '));
