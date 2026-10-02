@@ -1871,6 +1871,10 @@ regeneró `gaspais-chilco.pdf`.
 * **Verificador:** nuevas comprobaciones — logos en lámina de contenido, resplandor celeste, indicador `NN / TT`, borde dorado en banners, **bloques superpuestos** y **texto que se sale de su tarjeta**. La de superposición detectó una falla real (la tarjeta de «Punto de partida» quedaba bajo el banner tras subir la tipografía) que las comprobaciones previas no veían; ahora se corrige y se vuelve a medir. Detección de logos acotada a `.cobrand/.hd` (los logos de Unidrogas/Duarte son contenido).
 * **Decisión mía:** el cierre conserva los logos (es lámina «borde», como la portada). «Indicador de página» se interpretó como el `NN / TT` del pie, **no** como el contador de sección «01 / 05» junto al título de las láminas de portafolio (confirmar).
 
+## [2026-10-02] ajuste | Se elimina la fila de puntos «● ○ ○ ○ ○ 01 / 05» (indicador de módulo/página) de las láminas de portafolio
+* **Pedido del usuario:** quitar ese indicador (los puntos y el «01 / 05»), **conservando el numeral grande** de sección (`.ghost`). Resuelve la duda abierta de la ronda anterior (había interpretado que «indicador de página» era solo el `NN / TT` del pie).
+* **Regla del agente:** ningún indicador de página/módulo en la lámina (ni `NN / TT`, ni puntos, ni `NN / TT` junto al título). `verificar_deck.py` ahora rechaza elementos `*dots*/pager/pagination/stepper` y textos «NN / TT» o «NN · NN / TT» fuera del pie. `globant-dojo-v3` (láminas 4, 5, 6) corregido y verificado.
+
 ## [2026-10-02] rediseño | Sistema v4: Poppins en todo, fondo blanco, decoraciones en marcos, íconos nuevos, láminas 2–7 de `globant-dojo-v3` rediseñadas
 * **Pedido del usuario (todo queda como regla del agente):**
   1. **Prioridad a Poppins en toda la presentación** → título y cuerpo en Poppins (Regular/Medium/SemiBold/Black); **Roboto Mono eliminada** (el verificador la rechaza). *Esto se aparta del Brandbook p.10 (cuerpo en Roboto Mono) por decisión expresa del usuario.* Efecto colateral útil: Poppins es más estrecha, caben más palabras por línea.
