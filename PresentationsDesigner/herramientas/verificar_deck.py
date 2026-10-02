@@ -68,7 +68,7 @@ JS = r"""
     if (/rgba?\(\s*44\s*,\s*170\s*,\s*255/.test(bgTxt)) S.err.push('Fondo con resplandor/difuminación CELESTE: prohibido (ajuste del usuario); usar solo el resplandor violeta suave.');
     { const pi = [...sl.querySelectorAll('.ft *, .s-footer *')].find(e => /^\s*\d{1,2}\s*\/\s*\d{1,2}\s*$/.test(e.textContent) && !e.children.length);
       if (pi) S.err.push('Indicador de página «NN / TT» en el pie: prohibido (ajuste del usuario); el visor ya muestra «N / total».'); }
-    { const dots = [...sl.querySelectorAll('[class*="dots"],[class*="pager"],[class*="pagination"],[class*="stepper"]')].filter(e => !decor(e));
+    { const dots = [...sl.querySelectorAll('[class*="dots"],[class*="pager"],[class*="pagination"],[class*="stepper"]')].filter(e => !decor(e) && [...e.classList].some(c => /dots|pager|pagination|stepper/.test(c) && !/^fx/.test(c)));   // .fx--dots es decoración de marco, no un indicador
       const txt = [...sl.querySelectorAll('*')].find(e => !e.children.length && !decor(e) && !e.closest('.ft,.s-footer') && /^\s*\d{1,2}(\s*[·,]\s*\d{1,2})*\s*\/\s*\d{1,2}\s*$/.test(e.textContent));
       if (dots.length || txt) S.err.push('Indicador de página/módulo (puntos y/o «NN / TT») en la lámina: prohibido (ajuste del usuario); solo se conserva el numeral grande de sección (.ghost).'); }
     sl.querySelectorAll('[class*="reading"],[class*="banner"],[class*="note"],[class*="franja"]').forEach(e => { const b = getComputedStyle(e);
